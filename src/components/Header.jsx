@@ -1,7 +1,6 @@
 import logo from "../assets/img/logo.svg";
 
 const Header = () => {
-  console.log(logo);
   return (
     <header className="container">
       <a href="/">

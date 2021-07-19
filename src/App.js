@@ -1,10 +1,16 @@
+import { Fragment } from "react";
+
 import Header from "./components/Header";
+import Presentation from "./components/Presentation";
+import Main from "./components/Main";
 
 const App = () => {
   return (
-    <div className="App">
+    <Fragment>
       <Header />
-    </div>
+      <Presentation />
+      <Main />
+    </Fragment>
   );
 };
 

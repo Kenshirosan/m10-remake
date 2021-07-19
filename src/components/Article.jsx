@@ -16,20 +16,30 @@
 
 // Sans destructuring
 const Article = (props) => {
+  let icon = null;
+  if (props.icon) {
+    icon = <i className={props.icon} />;
+  }
+
   return (
-    <article className={"clear"}>
-      {" "}
-      {/* Rendre la classe dynamique */}
-      {/*  Si balise i : on met balise i ici*/}
+    <article className={props.class}>
+      {/*  Si balise <i> : on met balise </i> ici* */}
+      {icon}
+
       <h3>{props.title}</h3>
       {props.content.map((p) => {
         return <p>{p}</p>;
       })}
-      <img src={props.image} alt="" />
+
+      {/* Si on a une image */}
+      {props.image && <img src={props.image} alt="" />}
+
       {/*si balise a, on met balise a ici*/}
-      <a href="#">
-        En savoir plus <i className="fa fa-plus-circle" />
-      </a>
+      {props.link && (
+        <a href="#">
+          En savoir plus <i className="fa fa-plus-circle" />
+        </a>
+      )}
     </article>
   );
 };

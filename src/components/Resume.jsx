@@ -32,10 +32,34 @@ const Resume = () => {
   return (
     <section id="resume">
       <h2>Quelques exemples de réalisations</h2>
-      <Article title={"Orange Juice"} image={un} content={contenu} />
-      <Article title={"Banana Juice"} image={deux} content={contenu} />
-      <Article title={"Pineapple Juice"} image={trois} content={contenu} />
-      <Article title={"Grape Juice"} image={quatre} content={contenu} />
+      <Article
+        class="clear"
+        title={"Orange Juice"}
+        image={un}
+        content={contenu}
+        link={true}
+      />
+      <Article
+        class="clear"
+        title={"Banana Juice"}
+        image={deux}
+        content={contenu}
+        link={true}
+      />
+      <Article
+        class="clear"
+        title={"Pineapple Juice"}
+        image={trois}
+        content={contenu}
+        link={true}
+      />
+      <Article
+        class="clear"
+        title={"Grape Juice"}
+        image={quatre}
+        content={contenu}
+        link={true}
+      />
     </section>
   );
 };

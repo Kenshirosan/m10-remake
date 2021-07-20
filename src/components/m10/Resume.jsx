@@ -1,7 +1,7 @@
-import un from "../assets/img/realisation/1.png";
-import deux from "../assets/img/realisation/2.png";
-import trois from "../assets/img/realisation/3.png";
-import quatre from "../assets/img/realisation/4.png";
+import un from "../../m10assets/img/realisation/1.png";
+import deux from "../../m10assets/img/realisation/2.png";
+import trois from "../../m10assets/img/realisation/3.png";
+import quatre from "../../m10assets/img/realisation/4.png";
 import Article from "./Article";
 // Extraire un composant Article
 const Resume = () => {

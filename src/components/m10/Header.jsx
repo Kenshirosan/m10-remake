@@ -1,4 +1,4 @@
-import logo from "../assets/img/logo.svg";
+import logo from "../../m10assets/img/logo.svg";
 
 const Header = () => {
   return (

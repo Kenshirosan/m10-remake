@@ -1,7 +1,7 @@
 import { Component } from "react";
-import html from "../assets/img/html.svg";
-import css from "../assets/img/css.svg";
-import js from "../assets/img/js.svg";
+import html from "../../m10assets/img/html.svg";
+import css from "../../m10assets/img/css.svg";
+import js from "../../m10assets/img/js.svg";
 import Figure from "./Figure";
 
 // Extraire un composant Figure

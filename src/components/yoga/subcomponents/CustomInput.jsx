@@ -5,7 +5,12 @@ const CustomInput = (props) => {
   return (
     <Fragment>
       <label htmlFor={props.id}>{props.labelText}</label>
-      <input name={props.name} type={props.type} id={props.id} />
+      <input
+        name={props.name}
+        type={props.type}
+        id={props.id}
+        onChange={props.onChange}
+      />
     </Fragment>
   );
 };
@@ -15,6 +20,7 @@ CustomInput.propTypes = {
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default CustomInput;

@@ -10,6 +10,7 @@ const CustomInput = (props) => {
         type={props.type}
         id={props.id}
         onChange={props.onChange}
+        value={props.value}
       />
     </Fragment>
   );

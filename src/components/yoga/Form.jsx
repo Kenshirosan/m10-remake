@@ -4,17 +4,24 @@ import CustomInput from "./subcomponents/CustomInput";
 import CustomSelect from "./subcomponents/CustomSelect";
 
 class Form extends Component {
-  state = {
-    prenom: "",
-    nom: "",
-    mail: "",
-    amis: false,
-    detente: false,
-    medecin: false,
-    ami: "",
-    subscribe: "",
-    reputation: "",
-  };
+  constructor() {
+    super();
+
+    this.state = {
+      prenom: "",
+      nom: "",
+      mail: "",
+      amis: false,
+      detente: false,
+      medecin: false,
+      ami: "",
+      subscribe: "non",
+      reputation: "",
+      age: "18",
+    };
+
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
 
   onChangeHandler(event) {
     const inputName = event.target.name;
@@ -22,28 +29,27 @@ class Form extends Component {
     if (
       inputName === "detente" ||
       inputName === "amis" ||
-      inputName === "medecin" ||
-      inputName === "subscribe"
+      inputName === "medecin"
     ) {
-      console.log(event.target);
-
       this.setState({ [event.target.name]: event.target.checked });
     } else {
       this.setState({ [event.target.name]: event.target.value });
     }
+  }
 
-    // switch (event.target.name) {
-    //
-    // }
-    //
-    // console.log(event.target.name);
+  handleSubmit(event) {
+    event.preventDefault();
+
+    localStorage.setItem("infos", JSON.stringify(this.state));
+
+    event.target.reset();
   }
 
   render() {
     return (
       <Fragment>
         <h2>Pour valider votre réservation, compléter ce formulaire :</h2>
-        <form>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <fieldset>
             <legend>Vos coordonnées</legend>
             <ul>
@@ -53,7 +59,7 @@ class Form extends Component {
                   id="prenom"
                   labelText="Votre Prénom :"
                   name="prenom"
-                  onChange={this.onChangeHandler.bind(this)}
+                  onChange={this.onChangeHandler}
                 />
               </li>
               <li>
@@ -62,7 +68,7 @@ class Form extends Component {
                   id="nom"
                   labelText="Votre nom :"
                   name="nom"
-                  onChange={this.onChangeHandler.bind(this)}
+                  onChange={this.onChangeHandler}
                 />
               </li>
               <li>
@@ -71,8 +77,21 @@ class Form extends Component {
                   id="mail"
                   labelText="Votre mail :"
                   name="mail"
-                  onChange={this.onChangeHandler.bind(this)}
+                  onChange={this.onChangeHandler}
                 />
+              </li>
+              <li>
+                <label htmlFor="age">Votre Age</label>
+                <input
+                  name="age"
+                  type="range"
+                  id="age"
+                  onChange={this.onChangeHandler}
+                  min="18"
+                  max="122"
+                  step="1"
+                />
+                {this.state.age}
               </li>
             </ul>
           </fieldset>
@@ -85,7 +104,7 @@ class Form extends Component {
                   id="detente"
                   labelText="Besoin de me détendre"
                   name="detente"
-                  onChange={this.onChangeHandler.bind(this)}
+                  onChange={this.onChangeHandler}
                 />
               </li>
               <li>
@@ -94,7 +113,7 @@ class Form extends Component {
                   id="medecin"
                   labelText="Mon médecin m'a conseillé de venir"
                   name="medecin"
-                  onChange={this.onChangeHandler.bind(this)}
+                  onChange={this.onChangeHandler}
                 />
               </li>
               <li>
@@ -103,7 +122,7 @@ class Form extends Component {
                   id="amis"
                   labelText="Je veux tester avec des amis"
                   name="amis"
-                  onChange={this.onChangeHandler.bind(this)}
+                  onChange={this.onChangeHandler}
                 />
               </li>
             </ul>
@@ -119,7 +138,8 @@ class Form extends Component {
                   id="yes"
                   labelText="Oui"
                   name="subscribe"
-                  onChange={this.onChangeHandler.bind(this)}
+                  value="oui"
+                  onChange={this.onChangeHandler}
                 />
               </li>
               <li>
@@ -128,7 +148,8 @@ class Form extends Component {
                   id="no"
                   labelText="Non"
                   name="subscribe"
-                  onChange={this.onChangeHandler.bind(this)}
+                  value="non"
+                  onChange={this.onChangeHandler}
                 />
               </li>
             </ul>
@@ -139,7 +160,7 @@ class Form extends Component {
               name="reputation"
               id="reputation"
               data={sondage}
-              onChange={this.onChangeHandler.bind(this)}
+              onChange={this.onChangeHandler}
             />
           </fieldset>
           <button type="submit">Envoyer</button>

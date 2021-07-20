@@ -34,28 +34,28 @@ const Resume = () => {
       <h2>Quelques exemples de réalisations</h2>
       <Article
         class="clear"
-        title={"Orange Juice"}
+        title="Orange Juice"
         image={un}
         content={contenu}
         link={true}
       />
       <Article
         class="clear"
-        title={"Banana Juice"}
+        title="Banana Juice"
         image={deux}
         content={contenu}
         link={true}
       />
       <Article
         class="clear"
-        title={"Pineapple Juice"}
+        title="Pineapple Juice"
         image={trois}
         content={contenu}
         link={true}
       />
       <Article
         class="clear"
-        title={"Grape Juice"}
+        title="Grape Juice"
         image={quatre}
         content={contenu}
         link={true}

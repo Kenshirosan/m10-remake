@@ -1,19 +1,4 @@
-// Avec destructuring
-// const Article = ({ title, image, content }) => {
-//   return (
-//     <article className={"clear"}>
-//       <h3>{title}</h3>
-//       {content.map((p) => {
-//         return <p>{p}</p>;
-//       })}
-//       <img src={image} alt="" />
-//       <a href="#">
-//         En savoir plus <i className="fa fa-plus-circle" />
-//       </a>
-//     </article>
-//   );
-// };
-
+import PropTypes from "prop-types";
 // Sans destructuring
 const Article = (props) => {
   let icon = null;
@@ -34,6 +19,8 @@ const Article = (props) => {
       {/* Si on a une image */}
       {props.image && <img src={props.image} alt="" />}
 
+      {/*{props.image ? <img src={props.image} alt="" /> : null}*/}
+
       {/*si balise a, on met balise a ici*/}
       {props.link && (
         <a href="#">
@@ -43,4 +30,34 @@ const Article = (props) => {
     </article>
   );
 };
+
+Article.defaultProps = {
+  link: false,
+};
+
+Article.propTypes = {
+  link: PropTypes.bool,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.array.isRequired,
+  icon: PropTypes.string,
+  image: PropTypes.string,
+  class: PropTypes.string,
+};
+
+// Avec destructuring
+// const Article = ({ title, image, content }) => {
+//   return (
+//     <article className={"clear"}>
+//       <h3>{title}</h3>
+//       {content.map((p) => {
+//         return <p>{p}</p>;
+//       })}
+//       <img src={image} alt="" />
+//       <a href="#">
+//         En savoir plus <i className="fa fa-plus-circle" />
+//       </a>
+//     </article>
+//   );
+// };
+
 export default Article;

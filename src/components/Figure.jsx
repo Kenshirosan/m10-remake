@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Figure = ({ image, title, content }) => {
   return (
     <figure className="language">
@@ -8,6 +10,12 @@ const Figure = ({ image, title, content }) => {
       </figcaption>
     </figure>
   );
+};
+
+Figure.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default Figure;

@@ -1,5 +1,10 @@
 import { Fragment } from "react";
 
+// YOGA
+import Header from "./components/yoga/Header";
+import Main from "./components/yoga/Main";
+import Footer from "./components/yoga/Footer";
+// M10
 // import Header from "./components/m10/Header";
 // import Presentation from "./components/m10/Presentation";
 // import Main from "./components/m10/Main";
@@ -7,9 +12,10 @@ import { Fragment } from "react";
 const App = () => {
   return (
     <Fragment>
-      {/*<Header />*/}
+      <Header />
       {/*<Presentation />*/}
-      {/*<Main />*/}
+      <Main />
+      <Footer text={new Date().toLocaleDateString()} />
     </Fragment>
   );
 };

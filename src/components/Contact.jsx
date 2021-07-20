@@ -1,5 +1,6 @@
 // Extraire des composants : Input et Button
 import { Component } from "react";
+import ContactForm from "./ContactForm";
 
 // const Contact = () => {
 //   return (
@@ -43,17 +44,7 @@ class Contact extends Component {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
-        <form>
-          <input type="text" name="name" placeholder="Votre prénom" />
-          <input type="text" name="mail" placeholder="Votre mail" />
-          <textarea name="message" rows="1" placeholder="Votre message" />
-          <button type="submit" name="button">
-            Envoyer
-          </button>
-          <button type="reset" name="button">
-            Effacer
-          </button>
-        </form>
+        <ContactForm />
       </section>
     );
   }

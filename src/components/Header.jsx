@@ -10,10 +10,10 @@ const Header = () => {
         <a href="/">
           <i className="fa fa-home" /> Accueil
         </a>
-        <a href="#">
+        <a href="!#">
           <i className="fa fa-folder-open" /> Réalisations
         </a>
-        <a href="#">
+        <a href="!#">
           <i className="fa fa-envelope" /> Contact
         </a>
       </nav>

@@ -22,7 +22,16 @@ class ContactForm extends Component {
     message: "",
   };
 
+  getData(e) {
+    e.preventDefault();
+
+    localStorage.setItem("message", JSON.stringify(this.state));
+
+    e.target.reset();
+  }
+
   handleChange(e) {
+    // this.setState({ [e.target.name]: e.target.value });
     if (e.target.name === "name") {
       this.setState({ name: e.target.value });
     } else if (e.target.name === "email") {
@@ -30,12 +39,11 @@ class ContactForm extends Component {
     } else {
       this.setState({ message: e.target.value });
     }
-    console.log(e.target.name);
   }
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.getData.bind(this)}>
         <TextInput
           name="name"
           placeholder="Votre prénom"
@@ -47,7 +55,6 @@ class ContactForm extends Component {
           placeholder="Votre mail"
           handleOnChange={this.handleChange.bind(this)}
         />
-
         <textarea
           onChange={this.handleChange.bind(this)}
           name="message"

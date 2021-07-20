@@ -23,7 +23,7 @@ const Article = (props) => {
 
       {/*si balise a, on met balise a ici*/}
       {props.link && (
-        <a href="#">
+        <a href="!#">
           En savoir plus <i className="fa fa-plus-circle" />
         </a>
       )}

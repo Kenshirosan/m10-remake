@@ -27,8 +27,8 @@ const Article = (props) => {
       {icon}
 
       <h3>{props.title}</h3>
-      {props.content.map((p) => {
-        return <p>{p}</p>;
+      {props.content.map((p, index) => {
+        return <p key={index}>{p}</p>;
       })}
 
       {/* Si on a une image */}

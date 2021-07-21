@@ -17,7 +17,7 @@ const data = [
   {
     id: 4,
     title: "Bosser le soir et le week-end",
-    done: false,
+    done: true,
   },
   {
     id: 5,

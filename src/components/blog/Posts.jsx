@@ -1,5 +1,6 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
 import Article from "./Article";
+import Loader from "./Loader";
 
 class Posts extends Component {
   constructor() {
@@ -20,6 +21,7 @@ class Posts extends Component {
       fetch(url)
         .then((res) => {
           if (res.ok) {
+            this.setState({ isLoading: false });
             return res.json();
           }
 
@@ -35,7 +37,7 @@ class Posts extends Component {
   }
 
   render() {
-    const { posts } = this.state;
+    const { posts, isLoading } = this.state;
 
     // Si isLoading affiche Loader
     // Sinon affiche les posts
@@ -43,9 +45,16 @@ class Posts extends Component {
     return (
       <section className="container" style={sStyle}>
         <h1>Today's News</h1>
-        {posts.map((post) => {
-          return <Article key={post.id} post={post} />;
-        })}
+
+        <Fragment>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            posts.map((post) => {
+              return <Article post={post} />;
+            })
+          )}
+        </Fragment>
       </section>
     );
   }

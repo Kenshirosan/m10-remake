@@ -30,25 +30,43 @@ class TodoList extends Component {
       isLoading: true,
       tasks: [],
     };
+
+    this.updateTask = this.updateTask.bind(this);
   }
 
+  // Méthode du cycle de vie du composant
+  // est appelée automatiquement après le constructeur
   componentDidMount() {
     setTimeout(() => {
-      this.setState({ isLoading: false });
-
       this.setState({ tasks: data });
+
+      this.setState({ isLoading: false });
     }, 500);
   }
 
-  // Ici, on accepte l'id qui remonte depuis le composant Task, on pourrait accepter directement l'objet task..
-  updateTask(id) {
-    console.log(id);
-    // Trouver la tache dans le state
-    // Mettre à jour la tâche
+  updateTask(updatedTask) {
+    // Trouver la tache dans le state : On la reçu en paramètre
+    // Mettre à jour la tâche : La propriété done doit prendre la valeur inverse de ce qu'elle est maintenant
+    updatedTask.done = !updatedTask.done;
+
     // map retourne un tableau modifié selon une condition,
-    // ce tableau contient le même nombre d'éléments que le tableau original
+    // Ce tableau contient le même nombre d'éléments que le tableau original
     //
+    // Mettre a jour le tableau contacts
+    // Avec map : si on trouve sur un contact la même id que l'on a dans updateContact, on remplace l'objet.
+    // Sinon on retourne l'objet en place sans modifications.
+    let newTasks = this.state.tasks.map((task) => {
+      return updatedTask.id === task.id ? updatedTask : task;
+
+      // On compare l'id de la tâche qu'on a mis à jour avec les id des tâches du state
+      // if (updatedTask.id === task.id) {
+      //   return updatedTask;
+      // }
+      // return task;
+    });
+
     // Mettre à jour le state
+    this.setState({ tasks: newTasks });
   }
 
   render() {

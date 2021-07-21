@@ -3,15 +3,20 @@ import { Component } from "react";
 
 class Task extends Component {
   render() {
+    const { task, updateTask } = this.props;
+
     return (
       <tr>
-        <td>{this.props.task.id}</td>
-        <td>{this.props.task.title}</td>
+        <td>{task.id}</td>
+        <td>{task.title}</td>
         {/*  Si done === true j'affiche oui, sinon j'affiche non*/}
-        <td>{this.props.task.done ? "Oui" : "Non"}</td>
+        <td>{task.done ? "Oui" : "Non"}</td>
         <td>
-          <button onClick={() => this.props.updateTask(this.props.task.id)}>
-            Complete
+          <button
+            onClick={() => updateTask(task)}
+            style={task.done ? btnDoneStyle : null}
+          >
+            Modifier
           </button>
         </td>
         <td>
@@ -29,6 +34,10 @@ Task.propTypes = {
 
 const btnDangerStyle = {
   background: "red",
+};
+
+const btnDoneStyle = {
+  backgroundColor: "green",
 };
 
 export default Task;

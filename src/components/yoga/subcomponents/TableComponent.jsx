@@ -12,12 +12,12 @@ const TableComponent = (props) => {
         </tr>
       </thead>
       <tbody>
-        {appointements.map((appointement, index) => {
+        {appointements.map((appointment, index) => {
           return (
             <Appointement
               key={index}
-              day={appointement.day}
-              hour={appointement.hour}
+              day={appointment.day}
+              hour={appointment.hour}
             />
           );
         })}

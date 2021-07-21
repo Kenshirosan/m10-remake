@@ -1,8 +1,8 @@
 import { Fragment } from "react";
-
+import Posts from "./components/blog/Posts";
 // YOGA
 import Header from "./components/yoga/Header";
-import Main from "./components/yoga/Main";
+// import Main from "./components/yoga/Main";
 import Footer from "./components/yoga/Footer";
 // M10
 // import Header from "./components/m10/Header";
@@ -14,7 +14,8 @@ const App = () => {
     <Fragment>
       <Header />
       {/*<Presentation />*/}
-      <Main />
+      {/*<Main />*/}
+      <Posts />
       <Footer text={new Date().toLocaleDateString()} />
     </Fragment>
   );

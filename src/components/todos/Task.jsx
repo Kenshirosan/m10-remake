@@ -1,3 +1,4 @@
+// importer prop-types
 import { Component } from "react";
 
 class Task extends Component {
@@ -20,6 +21,8 @@ class Task extends Component {
     );
   }
 }
+
+Task.propTypes = {};
 
 const btnDangerStyle = {
   background: "red",

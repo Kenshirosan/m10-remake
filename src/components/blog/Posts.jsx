@@ -56,7 +56,7 @@ class Posts extends Component {
             <Loader />
           ) : (
             posts.map((post) => {
-              // Trouver l'utilisateur qui a l'id correspondant a post.userId et le passer en props
+              // Trouver l'utilisateur qui a l'id correspondant a post.userId et le passer en props au composant Article
               author = users.find((user) => user.id === post.userId);
 
               return <Article key={post.id} post={post} author={author} />;

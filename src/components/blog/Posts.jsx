@@ -15,10 +15,15 @@ class Posts extends Component {
 
   // Méthode du cycle de vie du composant : appelée automatiquement après le constructeur
   componentDidMount() {
+    let postsUrl = new URL("https://jsonplaceholder.typicode.com/posts");
+    let usersUrl = new URL("https://jsonplaceholder.typicode.com/users");
     // Extraire le code suivant dans une méthode
     // Appeler 2 fois cette méthode : une fois pour les posts, une fois pour les users
-    let url = new URL("https://jsonplaceholder.typicode.com/posts");
+    this.getData(postsUrl, "posts");
+    this.getData(usersUrl, "users");
+  }
 
+  getData(url, state) {
     fetch(url)
       .then((res) => {
         if (res.ok) {
@@ -29,7 +34,7 @@ class Posts extends Component {
         throw new Error("Something went horribly wrong !");
       })
       .then((data) => {
-        this.setState({ posts: data });
+        this.setState({ [state]: data });
       })
       .catch((error) => {
         console.log(error.message);
@@ -37,8 +42,8 @@ class Posts extends Component {
   }
 
   render() {
-    const { posts, isLoading } = this.state;
-
+    const { posts, users, isLoading } = this.state;
+    let author = {};
     // Si isLoading affiche Loader
     // Sinon affiche les posts
 
@@ -52,7 +57,9 @@ class Posts extends Component {
           ) : (
             posts.map((post) => {
               // Trouver l'utilisateur qui a l'id correspondant a post.userId et le passer en props
-              return <Article post={post} />;
+              author = users.find((user) => user.id === post.userId);
+
+              return <Article key={post.id} post={post} author={author} />;
             })
           )}
         </Fragment>

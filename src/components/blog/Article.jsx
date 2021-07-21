@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
-// Sans destructuring
-const Article = ({ post }) => {
-  console.log(post.userId);
+// Avec destructuring
+// const { post, author} = props;
+const Article = ({ post, author }) => {
   return (
     <article className="article" style={aStyle}>
       <h3 style={tStyle}>
-        {post.title} <span>par 'Nom de l'auteur'</span>
+        {post.title} <span style={spanStyle}>Par : {author.name}</span>
       </h3>
       <p style={pStyle}>{post.body}</p>
     </article>
@@ -28,8 +28,13 @@ const pStyle = {
   textAlign: "center",
 };
 
+const spanStyle = {
+  color: "blue",
+};
+
 Article.propTypes = {
   post: PropTypes.object.isRequired,
+  author: PropTypes.object.isRequired,
 };
 
 export default Article;

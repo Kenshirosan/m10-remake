@@ -1,4 +1,4 @@
-// importer prop-types
+import PropTypes from "prop-types";
 import { Component } from "react";
 
 class Task extends Component {
@@ -22,7 +22,10 @@ class Task extends Component {
   }
 }
 
-Task.propTypes = {};
+Task.propTypes = {
+  task: PropTypes.object.isRequired,
+  updateTask: PropTypes.func.isRequired,
+};
 
 const btnDangerStyle = {
   background: "red",

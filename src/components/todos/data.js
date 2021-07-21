@@ -29,6 +29,11 @@ const data = [
     title: "Tester des choses : Expérimenter avec JS, CSS et HTML",
     done: false,
   },
+  {
+    id: 7,
+    title: "Faire du sport",
+    done: false,
+  },
 ];
 
 export default data;

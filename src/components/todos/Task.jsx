@@ -9,7 +9,9 @@ class Task extends Component {
         {/*  Si done === true j'affiche oui, sinon j'affiche non*/}
         <td>{this.props.task.done ? "Oui" : "Non"}</td>
         <td>
-          <button>Complete</button>
+          <button onClick={() => this.props.updateTask(this.props.task.id)}>
+            Complete
+          </button>
         </td>
         <td>
           <button style={btnDangerStyle}>Supprimer</button>

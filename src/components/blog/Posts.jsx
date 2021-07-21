@@ -15,25 +15,25 @@ class Posts extends Component {
 
   // Méthode du cycle de vie du composant : appelée automatiquement après le constructeur
   componentDidMount() {
+    // Extraire le code suivant dans une méthode
+    // Appeler 2 fois cette méthode : une fois pour les posts, une fois pour les users
     let url = new URL("https://jsonplaceholder.typicode.com/posts");
 
-    setTimeout(() => {
-      fetch(url)
-        .then((res) => {
-          if (res.ok) {
-            this.setState({ isLoading: false });
-            return res.json();
-          }
+    fetch(url)
+      .then((res) => {
+        if (res.ok) {
+          this.setState({ isLoading: false });
+          return res.json();
+        }
 
-          throw new Error("Something went horribly wrong !");
-        })
-        .then((data) => {
-          this.setState({ posts: data });
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
-    }, 2000);
+        throw new Error("Something went horribly wrong !");
+      })
+      .then((data) => {
+        this.setState({ posts: data });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   }
 
   render() {
@@ -51,6 +51,7 @@ class Posts extends Component {
             <Loader />
           ) : (
             posts.map((post) => {
+              // Trouver l'utilisateur qui a l'id correspondant a post.userId et le passer en props
               return <Article post={post} />;
             })
           )}

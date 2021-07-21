@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
 // Sans destructuring
 const Article = ({ post }) => {
+  console.log(post.userId);
   return (
     <article className="article" style={aStyle}>
-      <h3 style={tStyle}>{post.title}</h3>
+      <h3 style={tStyle}>
+        {post.title} <span>par 'Nom de l'auteur'</span>
+      </h3>
       <p style={pStyle}>{post.body}</p>
     </article>
   );

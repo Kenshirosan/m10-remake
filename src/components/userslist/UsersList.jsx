@@ -27,20 +27,46 @@ class UsersList extends Component {
 
         this.state = {
             users: [],
+            baseUrl: new URL('https://jsonplaceholder.typicode.com/users'),
             isLoading: true,
         };
     }
 
+    // Méthode du cycle de vie du composant : appelée automatiquement après le constructeur
     componentDidMount() {
-        this.getData(url, 'users');
+        this.getData(this.state.baseUrl, 'users');
     }
 
-    getData(user, state) {}
+    getData(url, state) {
+        fetch(url)
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+
+                throw new Error('Something went horribly wrong !');
+            })
+            .then(data => {
+                this.setState({ [state]: data });
+                this.setState({ isLoading: false });
+            })
+            .catch(error => {
+                console.log(error.message);
+            });
+    }
 
     render() {
+        const { users, isLoading } = this.state;
+
         return (
             <div>
                 <h2>Users</h2>
+
+                {isLoading ? (
+                    <Loader />
+                ) : (
+                    users.map(user => <User user={user} />)
+                )}
             </div>
         );
     }

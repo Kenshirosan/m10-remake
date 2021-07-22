@@ -1,9 +1,22 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class User extends Component {
     render() {
-        return <h2>User</h2>;
+        const { user } = this.props;
+
+        return (
+            <ul>
+                <li>
+                    <a href="!#">{user.username}</a>
+                </li>
+            </ul>
+        );
     }
 }
+
+User.propTypes = {
+    user: PropTypes.object.isRequired,
+};
 
 export default User;

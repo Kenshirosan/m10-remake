@@ -31,9 +31,11 @@ class UsersList extends Component {
         };
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        this.getData(url, 'users');
+    }
 
-    getData() {}
+    getData(user, state) {}
 
     render() {
         return (

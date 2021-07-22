@@ -91,15 +91,9 @@ class TodoList extends Component {
             </thead>
             <tbody>
               {/*  Afficher data */}
-              {tasks.map((task) => {
-                return (
-                  <Task
-                    key={task.id}
-                    task={task}
-                    updateTask={this.updateTask}
-                  />
-                );
-              })}
+              {tasks.map((task) => (
+                <Task key={task.id} task={task} updateTask={this.updateTask} />
+              ))}
             </tbody>
           </table>
         )}

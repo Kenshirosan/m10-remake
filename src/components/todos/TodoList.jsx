@@ -18,23 +18,30 @@ class TodoList extends Component {
         this.createTask = this.createTask.bind(this);
     }
 
-    createTask(task) {
-        this.setState({ tasks: [task, ...this.state.tasks] });
-    }
-
+    /**
+     * componentDidMount() => méthode qui fait partie du cycle de vie du composant et qui est appelée juste après le constructeur
+     */
     componentDidMount() {
         setTimeout(() => {
-            this.setState({ tasks: data });
-
-            this.setState({ isLoading: false });
+            this.setState({ tasks: data, isLoading: false });
         }, 500);
+    }
+
+    createTask(task) {
+        // setState => modifier le state
+        this.setState({ tasks: [task, ...this.state.tasks] });
     }
 
     deleteTask(id) {
         if (window.confirm('Etes vous sur de vouloir effacer cette tâche ?')) {
             //
             this.setState({
-                tasks: this.state.tasks.filter(task => task.id !== id),
+                tasks: this.state.tasks.filter(task => {
+                    if (task.id !== id) {
+                        return task;
+                    }
+                    // return id !== task.id;
+                }),
             });
         }
     }
@@ -43,8 +50,15 @@ class TodoList extends Component {
         updatedTask.done = !updatedTask.done;
 
         this.setState({
-            tasks: this.state.tasks.map(task =>
-                updatedTask.id === task.id ? updatedTask : task
+            tasks: this.state.tasks.map(
+                task => {
+                    if (updatedTask.id === task.id) {
+                        return updatedTask;
+                    }
+
+                    return task;
+                }
+                // updatedTask.id === task.id ? updatedTask : task
             ),
         });
     }

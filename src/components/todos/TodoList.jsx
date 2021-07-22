@@ -1,6 +1,7 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
 import Loader from "../blog/Loader";
 import Task from "./Task";
+import AddTask from "./AddTask";
 import data from "./data";
 /*
  *
@@ -32,6 +33,7 @@ class TodoList extends Component {
     };
 
     this.updateTask = this.updateTask.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
   // Méthode du cycle de vie du composant
@@ -42,6 +44,15 @@ class TodoList extends Component {
 
       this.setState({ isLoading: false });
     }, 500);
+  }
+
+  deleteTask(id) {
+    if (window.confirm("Etes vous sur de vouloir effacer cette tâche ?")) {
+      //
+      this.setState({
+        tasks: this.state.tasks.filter((task) => task.id !== id),
+      });
+    }
   }
 
   updateTask(updatedTask) {
@@ -79,23 +90,31 @@ class TodoList extends Component {
         {isLoading ? (
           <Loader />
         ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>Title</th>
-                <th>Done</th>
-                <th>Action</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/*  Afficher data */}
-              {tasks.map((task) => (
-                <Task key={task.id} task={task} updateTask={this.updateTask} />
-              ))}
-            </tbody>
-          </table>
+          <Fragment>
+            <AddTask />
+            <table>
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Title</th>
+                  <th>Done</th>
+                  <th>Action</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/*  Afficher data */}
+                {tasks.map((task) => (
+                  <Task
+                    key={task.id}
+                    task={task}
+                    updateTask={this.updateTask}
+                    deleteTask={this.deleteTask}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </Fragment>
         )}
       </section>
     );

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 class Task extends Component {
   render() {
-    const { task, updateTask } = this.props;
+    const { task, updateTask, deleteTask } = this.props;
 
     return (
       <tr>
@@ -20,7 +20,9 @@ class Task extends Component {
           </button>
         </td>
         <td>
-          <button style={btnDangerStyle}>Supprimer</button>
+          <button onClick={() => deleteTask(task.id)} style={btnDangerStyle}>
+            Supprimer
+          </button>
         </td>
       </tr>
     );
@@ -30,6 +32,7 @@ class Task extends Component {
 Task.propTypes = {
   task: PropTypes.object.isRequired,
   updateTask: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };
 
 const btnDangerStyle = {

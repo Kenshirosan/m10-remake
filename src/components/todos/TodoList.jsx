@@ -1,5 +1,5 @@
 import { Component, Fragment } from 'react';
-import Loader from '../blog/Loader';
+import Loader from '../spinners/Loader';
 import Task from './Task';
 import AddTask from './AddTask';
 import data from './data';

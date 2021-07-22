@@ -1,8 +1,8 @@
-import { Component, Fragment } from "react";
-import Loader from "../blog/Loader";
-import Task from "./Task";
-import AddTask from "./AddTask";
-import data from "./data";
+import { Component, Fragment } from 'react';
+import Loader from '../spinners/Loader';
+import Task from './Task';
+import AddTask from './AddTask';
+import data from './data';
 /*
  *
  * CRUD
@@ -24,101 +24,101 @@ import data from "./data";
  */
 
 class TodoList extends Component {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      isLoading: true,
-      tasks: [],
-    };
+        this.state = {
+            isLoading: true,
+            tasks: [],
+        };
 
-    this.updateTask = this.updateTask.bind(this);
-    this.deleteTask = this.deleteTask.bind(this);
-  }
-
-  // Méthode du cycle de vie du composant
-  // est appelée automatiquement après le constructeur
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ tasks: data });
-
-      this.setState({ isLoading: false });
-    }, 500);
-  }
-
-  deleteTask(id) {
-    if (window.confirm("Etes vous sur de vouloir effacer cette tâche ?")) {
-      //
-      this.setState({
-        tasks: this.state.tasks.filter((task) => task.id !== id),
-      });
+        this.updateTask = this.updateTask.bind(this);
+        this.deleteTask = this.deleteTask.bind(this);
     }
-  }
 
-  updateTask(updatedTask) {
-    // Trouver la tache dans le state : On la reçu en paramètre
-    // Mettre à jour la tâche : La propriété done doit prendre la valeur inverse de ce qu'elle est maintenant
-    updatedTask.done = !updatedTask.done;
+    // Méthode du cycle de vie du composant
+    // est appelée automatiquement après le constructeur
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({ tasks: data });
 
-    // map retourne un tableau modifié selon une condition,
-    // Ce tableau contient le même nombre d'éléments que le tableau original
-    //
-    // Mettre a jour le tableau contacts
-    // Avec map : si on trouve sur un contact la même id que l'on a dans updateContact, on remplace l'objet.
-    // Sinon on retourne l'objet en place sans modifications.
-    let newTasks = this.state.tasks.map((task) => {
-      return updatedTask.id === task.id ? updatedTask : task;
+            this.setState({ isLoading: false });
+        }, 500);
+    }
 
-      // On compare l'id de la tâche qu'on a mis à jour avec les id des tâches du state
-      // if (updatedTask.id === task.id) {
-      //   return updatedTask;
-      // }
-      // return task;
-    });
+    deleteTask(id) {
+        if (window.confirm('Etes vous sur de vouloir effacer cette tâche ?')) {
+            //
+            this.setState({
+                tasks: this.state.tasks.filter(task => task.id !== id),
+            });
+        }
+    }
 
-    // Mettre à jour le state
-    this.setState({ tasks: newTasks });
-  }
+    updateTask(updatedTask) {
+        // Trouver la tache dans le state : On la reçu en paramètre
+        // Mettre à jour la tâche : La propriété done doit prendre la valeur inverse de ce qu'elle est maintenant
+        updatedTask.done = !updatedTask.done;
 
-  render() {
-    const { isLoading, tasks } = this.state;
+        // map retourne un tableau modifié selon une condition,
+        // Ce tableau contient le même nombre d'éléments que le tableau original
+        //
+        // Mettre a jour le tableau contacts
+        // Avec map : si on trouve sur un contact la même id que l'on a dans updateContact, on remplace l'objet.
+        // Sinon on retourne l'objet en place sans modifications.
+        let newTasks = this.state.tasks.map(task => {
+            return updatedTask.id === task.id ? updatedTask : task;
 
-    return (
-      <section className="container">
-        <h2>TodoList</h2>
+            // On compare l'id de la tâche qu'on a mis à jour avec les id des tâches du state
+            // if (updatedTask.id === task.id) {
+            //   return updatedTask;
+            // }
+            // return task;
+        });
 
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <Fragment>
-            <AddTask />
-            <table>
-              <thead>
-                <tr>
-                  <th>id</th>
-                  <th>Title</th>
-                  <th>Done</th>
-                  <th>Action</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/*  Afficher data */}
-                {tasks.map((task) => (
-                  <Task
-                    key={task.id}
-                    task={task}
-                    updateTask={this.updateTask}
-                    deleteTask={this.deleteTask}
-                  />
-                ))}
-              </tbody>
-            </table>
-          </Fragment>
-        )}
-      </section>
-    );
-  }
+        // Mettre à jour le state
+        this.setState({ tasks: newTasks });
+    }
+
+    render() {
+        const { isLoading, tasks } = this.state;
+
+        return (
+            <section className="container">
+                <h2>TodoList</h2>
+
+                {isLoading ? (
+                    <Loader />
+                ) : (
+                    <Fragment>
+                        <AddTask />
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Title</th>
+                                    <th>Done</th>
+                                    <th>Action</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/*  Afficher data */}
+                                {tasks.map(task => (
+                                    <Task
+                                        key={task.id}
+                                        task={task}
+                                        updateTask={this.updateTask}
+                                        deleteTask={this.deleteTask}
+                                    />
+                                ))}
+                            </tbody>
+                        </table>
+                    </Fragment>
+                )}
+            </section>
+        );
+    }
 }
 
 export default TodoList;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component, Fragment } from 'react';
 import Loader from '../spinners/Loader';
 import User from './User';
 /**
@@ -59,7 +59,7 @@ class UsersList extends Component {
         const { users, isLoading } = this.state;
 
         return (
-            <div>
+            <Fragment>
                 <h2>Users</h2>
 
                 {isLoading ? (
@@ -67,7 +67,7 @@ class UsersList extends Component {
                 ) : (
                     users.map(user => <User user={user} />)
                 )}
-            </div>
+            </Fragment>
         );
     }
 }

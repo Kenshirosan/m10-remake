@@ -19,7 +19,7 @@ const App = () => {
             {/*<Main />*/}
             {/*<Posts />*/}
             {/*<TodoList />*/}
-            <UsersList />²
+            {/*<UsersList />*/}
             <Footer text={new Date().toLocaleDateString()} />
         </Fragment>
     );

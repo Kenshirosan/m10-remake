@@ -52,27 +52,3 @@ function cancelTimer() {
     clearInterval(intervalId);
     affichageSecondes.innerText = compteArebours = 3;
 }
-
-function generateStars() {
-    for (let i = 0; i < numberOfStars; i++) {
-        let div = document.createElement('div');
-        div.classList.add('star');
-
-        const randomClass = generateRandomNumber(); // Génère un nombre aléatoire compris entre 1 et 3
-        const classes = ['tiny', 'normal', 'big']; // Lookup Table
-        div.classList.add(classes[randomClass]);
-
-        // On doit contenir les étoiles dans innerWidth et innerHeight
-        const positionX = generateRandomNumber(window.innerWidth);
-        const positionY = generateRandomNumber(window.innerHeight);
-
-        div.style.top = `${positionY}px`;
-        div.style.left = `${positionX}px`;
-
-        document.body.appendChild(div);
-    }
-}
-
-function generateRandomNumber(max = 3) {
-    return Math.floor(Math.random() * max);
-}

@@ -27,6 +27,7 @@ class Stars extends Component {
 
             let element = (
                 <div
+                    key={i}
                     className={`star ${starSize}`}
                     style={{
                         left: this.generateRandomNumber(window.innerWidth),

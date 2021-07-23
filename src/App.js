@@ -16,7 +16,7 @@ import Rocket from './components/rocket/Rocket';
 const App = () => {
     return (
         <Fragment>
-            <Header />
+            {/*<Header />*/}
             {/*<Presentation />*/}
             {/*<Main />*/}
             {/*<Posts />*/}

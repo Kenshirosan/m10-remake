@@ -1,17 +1,11 @@
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
 
 class Aside extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {}
-
     render() {
         return (
-            <Fragment>
-                <h2>Aside</h2>
-            </Fragment>
+            <aside id="billboard">
+                <span></span>
+            </aside>
         );
     }
 }

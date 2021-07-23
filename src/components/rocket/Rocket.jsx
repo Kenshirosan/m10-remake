@@ -12,13 +12,7 @@ class Rocket extends Component {
     componentDidMount() {}
 
     render() {
-        return (
-            <div>
-                <h2>Rocket</h2>
-                <Main />
-                <Aside />
-            </div>
-        );
+        return <Main />;
     }
 }
 

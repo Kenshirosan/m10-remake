@@ -57,16 +57,13 @@ class UsersList extends Component {
 
     render() {
         const { users, isLoading } = this.state;
+        const affichage = users.map(user => <User user={user} />);
 
         return (
             <Fragment>
                 <h2>Users</h2>
 
-                {isLoading ? (
-                    <Loader />
-                ) : (
-                    users.map(user => <User user={user} />)
-                )}
+                {isLoading ? <Loader /> : affichage}
             </Fragment>
         );
     }

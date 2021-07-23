@@ -1,17 +1,17 @@
-import { Component } from 'react';
+import { Component, Fragment } from 'react';
 
 class Aside extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
     }
 
     componentDidMount() {}
 
     render() {
         return (
-            <div>
+            <Fragment>
                 <h2>Aside</h2>
-            </div>
+            </Fragment>
         );
     }
 }

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 // import Posts from "./components/blog/Posts";
-// import TodoList from "./components/todos/TodoList";
-import UsersList from './components/userslist/UsersList';
+// import TodoList from './components/todos/TodoList';
+// import UsersList from './components/userslist/UsersList';
 // YOGA
 import Header from './components/yoga/Header';
 // import Main from "./components/yoga/Main";
@@ -10,6 +10,8 @@ import Footer from './components/yoga/Footer';
 // import Header from "./components/m10/Header";
 // import Presentation from "./components/m10/Presentation";
 // import Main from "./components/m10/Main";
+
+import Rocket from './components/rocket/Rocket';
 
 const App = () => {
     return (
@@ -20,6 +22,7 @@ const App = () => {
             {/*<Posts />*/}
             {/*<TodoList />*/}
             {/*<UsersList />*/}
+            <Rocket />
             <Footer text={new Date().toLocaleDateString()} />
         </Fragment>
     );

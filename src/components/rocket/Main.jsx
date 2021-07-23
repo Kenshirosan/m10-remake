@@ -1,5 +1,8 @@
 import { Component } from 'react';
 import Aside from './Aside';
+
+import launchingRamp from '../../rocket-assets/images/launching-ramp.png';
+
 class Main extends Component {
     render() {
         return (
@@ -8,7 +11,7 @@ class Main extends Component {
                 <Aside />
                 <img
                     id="launching-ramp"
-                    src="images/launching-ramp.png"
+                    src={launchingRamp}
                     alt="Launching ramp"
                 />
                 <img

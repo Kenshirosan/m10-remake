@@ -5,11 +5,6 @@ import Main from './Main';
 
 class Rocket extends Component {
     // Avant RENDER : JavaScript CLASSIQUE
-    constructor() {
-        super();
-    }
-
-    componentDidMount() {}
 
     render() {
         return <Main />;

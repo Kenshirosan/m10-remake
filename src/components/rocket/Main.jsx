@@ -1,5 +1,6 @@
 import { Component, Fragment } from 'react';
 import Aside from './Aside';
+import { Doughnut } from 'react-chartjs-2';
 
 import moon from '../../rocket-assets/images/fullmoon.png';
 import launchingRamp from '../../rocket-assets/images/launching-ramp.png';
@@ -8,6 +9,7 @@ import cancelBtn from '../../rocket-assets/images/cancel-button.png';
 
 import Stars from './Stars';
 
+// Import dynamique
 (async function () {
     const { default: foo } = await import('../../rocket-assets/images/firing-button.png');
     console.log(foo);
@@ -64,20 +66,21 @@ class Main extends Component {
     render() {
         return (
             <Fragment>
-                <main>
-                    <img id="moon" src={moon} alt="Fullmoon" />
-                    <Aside decompte={this.state.compteArebours} />
-                    <img id="launching-ramp" src={launchingRamp} alt="Launching ramp" />
-                    <img id="firing-button" src={firingBtn} alt="Firing button" onClick={this.startRocket.bind(this)} />
-                    <img id="cancel-button" src={cancelBtn} alt="Cancel button" onClick={this.stopRocket.bind(this)} />
-                    <img
-                        id="rocket"
-                        src={this.state.rocket}
-                        alt="rocket"
-                        className={this.state.started ? 'tookOff' : null}
-                    />
-                </main>
-                <Stars quantity={150} />
+                <Doughnut data={[10, 52, 39, 51]} />
+                {/*<main>*/}
+                {/*    <img id="moon" src={moon} alt="Fullmoon" />*/}
+                {/*    <Aside decompte={this.state.compteArebours} />*/}
+                {/*    <img id="launching-ramp" src={launchingRamp} alt="Launching ramp" />*/}
+                {/*    <img id="firing-button" src={firingBtn} alt="Firing button" onClick={this.startRocket.bind(this)} />*/}
+                {/*    <img id="cancel-button" src={cancelBtn} alt="Cancel button" onClick={this.stopRocket.bind(this)} />*/}
+                {/*    <img*/}
+                {/*        id="rocket"*/}
+                {/*        src={this.state.rocket}*/}
+                {/*        alt="rocket"*/}
+                {/*        className={this.state.started ? 'tookOff' : null}*/}
+                {/*    />*/}
+                {/*</main>*/}
+                {/*<Stars quantity={150} />*/}
             </Fragment>
         );
     }

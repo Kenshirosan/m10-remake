@@ -7,7 +7,11 @@ class Rocket extends Component {
     // Avant RENDER : JavaScript CLASSIQUE
 
     render() {
-        return <Main />;
+        return (
+            <section className="chart">
+                <Main />
+            </section>
+        );
     }
 }
 

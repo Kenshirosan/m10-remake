@@ -1,4 +1,8 @@
 import { Component, Fragment } from 'react';
+import { defaults } from 'react-chartjs-2';
+
+// Disable animating charts by default.
+
 import Aside from './Aside';
 import { Doughnut } from 'react-chartjs-2';
 
@@ -12,7 +16,6 @@ import Stars from './Stars';
 // Import dynamique
 (async function () {
     const { default: foo } = await import('../../rocket-assets/images/firing-button.png');
-    console.log(foo);
 })();
 
 let rocket = require('../../rocket-assets/images/rocket1.png').default;
@@ -26,6 +29,27 @@ class Main extends Component {
             intervalId: 0,
             timelapse: 1000,
             rocket,
+            data: {
+                labels: ['Variant 1', 'Variant 2', 'Variant 3', 'Variant 4', 'Variant Delta'],
+                datasets: [
+                    {
+                        label: 'My First Dataset',
+                        data: [28, 16, 7, 3, 75],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(75, 192, 192)',
+                            'rgb(255, 205, 86)',
+                            'rgb(201, 203, 207)',
+                            'rgb(54, 162, 235)',
+                        ],
+                    },
+                ],
+            },
+
+            options: {
+                maintainAspectRatio: false,
+                offset: [40, 0, 0, 0, 0],
+            },
         };
     }
 
@@ -66,7 +90,7 @@ class Main extends Component {
     render() {
         return (
             <Fragment>
-                <Doughnut data={[10, 52, 39, 51]} />
+                <Doughnut height={600} data={this.state.data} options={this.state.options} />
                 {/*<main>*/}
                 {/*    <img id="moon" src={moon} alt="Fullmoon" />*/}
                 {/*    <Aside decompte={this.state.compteArebours} />*/}

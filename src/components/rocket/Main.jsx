@@ -1,13 +1,14 @@
 import { Component } from 'react';
 import Aside from './Aside';
 
+import moon from '../../rocket-assets/images/fullmoon.png';
 import launchingRamp from '../../rocket-assets/images/launching-ramp.png';
 
 class Main extends Component {
     render() {
         return (
             <main>
-                <img id="moon" src="images/fullmoon.png" alt="Fullmoon" />
+                <img id="moon" src={moon} alt="Fullmoon" />
                 <Aside />
                 <img
                     id="launching-ramp"

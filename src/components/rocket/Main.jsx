@@ -4,7 +4,7 @@ import { defaults } from 'react-chartjs-2';
 // Disable animating charts by default.
 
 import Aside from './Aside';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut, Pie } from 'react-chartjs-2';
 
 import moon from '../../rocket-assets/images/fullmoon.png';
 import launchingRamp from '../../rocket-assets/images/launching-ramp.png';
@@ -90,7 +90,13 @@ class Main extends Component {
     render() {
         return (
             <Fragment>
-                <Doughnut height={600} data={this.state.data} options={this.state.options} />
+                <article className="chart">
+                    <Pie id="1" height={300} data={this.state.data} options={this.state.options} />
+                </article>
+                <article className="chart">
+                    <Doughnut id="2" height={300} data={this.state.data} options={this.state.options} />
+                </article>
+
                 {/*<main>*/}
                 {/*    <img id="moon" src={moon} alt="Fullmoon" />*/}
                 {/*    <Aside decompte={this.state.compteArebours} />*/}

@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Loader from '../spinners/Loader';
 import User from './User';
 /**
@@ -21,24 +21,17 @@ import User from './User';
  * DESTROY => Efface la resource : besoin d'un identifiant unique.
  *
  */
-class UsersList extends Component {
-    constructor() {
-        super();
+const UsersList = () => {
+    const [users, setUsers] = useState([]);
+    const [baseUrl, setBaseUrl] = useState(new URL('https://jsonplaceholder.typicode.com/users'));
+    const [isLoading, setIsLoading] = useState(true);
 
-        this.state = {
-            users: [],
-            baseUrl: new URL('https://jsonplaceholder.typicode.com/users'),
-            isLoading: true,
-        };
-    }
+    // Remplace componentDidMount
+    useEffect(() => {
+        getData(baseUrl);
+    }, []);
 
-    // Méthode du cycle de vie du composant : appelée automatiquement après le constructeur
-    // Remplacer par useEffect
-    componentDidMount() {
-        this.getData(this.state.baseUrl, 'users');
-    }
-
-    getData(url, state) {
+    const getData = url => {
         fetch(url)
             .then(res => {
                 if (res.ok) {
@@ -48,26 +41,23 @@ class UsersList extends Component {
                 throw new Error('Something went horribly wrong !');
             })
             .then(data => {
-                this.setState({ [state]: data });
-                this.setState({ isLoading: false });
+                setUsers(data);
+                setIsLoading(false);
             })
             .catch(error => {
                 console.log(error.message);
             });
-    }
+    };
 
-    render() {
-        const { users, isLoading } = this.state;
-        const affichage = users.map(user => <User user={user} />);
+    const affichage = users.map(user => <User user={user} />);
 
-        return (
-            <Fragment>
-                <h2>Users</h2>
+    return (
+        <Fragment>
+            <h2>Users</h2>
 
-                {isLoading ? <Loader /> : affichage}
-            </Fragment>
-        );
-    }
-}
+            {isLoading ? <Loader /> : affichage}
+        </Fragment>
+    );
+};
 
 export default UsersList;

@@ -1,107 +1,83 @@
-import { Component, Fragment } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import Loader from '../spinners/Loader';
 import Task from './Task';
 import AddTask from './AddTask';
 import data from './data';
 
-class TodoList extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            isLoading: true,
-            tasks: [],
-        };
-
-        this.updateTask = this.updateTask.bind(this);
-        this.deleteTask = this.deleteTask.bind(this);
-        this.createTask = this.createTask.bind(this);
-    }
+const TodoList = () => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [tasks, setTasks] = useState([]);
 
     /**
      * componentDidMount() => méthode qui fait partie du cycle de vie du composant et qui est appelée juste après le constructeur
+     *
+     * useEffect avec un tableau vide en deuxième argument est équivalent à componentDidMount
      */
-    componentDidMount() {
+    useEffect(() => {
         setTimeout(() => {
-            this.setState({ tasks: data, isLoading: false });
+            setIsLoading(false);
+            setTasks(data);
         }, 500);
-    }
+    }, []);
 
-    createTask(task) {
-        // setState => modifier le state
-        this.setState({ tasks: [task, ...this.state.tasks] });
-    }
+    const createTask = task => {
+        // AVEC SPREAD OPERATOR
+        const newTasks = [task, ...tasks];
+        setTasks(newTasks);
+    };
 
-    deleteTask(id) {
+    const deleteTask = id => {
         if (window.confirm('Etes vous sur de vouloir effacer cette tâche ?')) {
-            //
-            this.setState({
-                tasks: this.state.tasks.filter(task => {
-                    if (task.id !== id) {
-                        return task;
-                    }
-                    // return id !== task.id;
-                }),
-            });
-        }
-    }
-
-    updateTask(updatedTask) {
-        updatedTask.done = !updatedTask.done;
-
-        this.setState({
-            tasks: this.state.tasks.map(
-                task => {
-                    if (updatedTask.id === task.id) {
-                        return updatedTask;
-                    }
-
+            // filter : filtre un tableau et retourne un nouveau tableau filtré selon des conditions.
+            const newTasks = tasks.filter(task => {
+                if (task.id !== id) {
                     return task;
                 }
-                // updatedTask.id === task.id ? updatedTask : task
-            ),
-        });
-    }
+            });
 
-    render() {
-        const { isLoading, tasks } = this.state;
+            setTasks(newTasks);
+        }
+    };
 
-        return (
-            <section className="container">
-                <h2>TodoList</h2>
+    const updateTask = updatedTask => {
+        updatedTask.done = !updatedTask.done;
 
-                {isLoading ? (
-                    <Loader />
-                ) : (
-                    <Fragment>
-                        <AddTask createTask={this.createTask} />
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>Title</th>
-                                    <th>Done</th>
-                                    <th>Action</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/*  Afficher data */}
-                                {tasks.map(task => (
-                                    <Task
-                                        key={task.id}
-                                        task={task}
-                                        updateTask={this.updateTask}
-                                        deleteTask={this.deleteTask}
-                                    />
-                                ))}
-                            </tbody>
-                        </table>
-                    </Fragment>
-                )}
-            </section>
-        );
-    }
-}
+        // map retourne un nouveau tableau modifié en fonction de conditions, le nouveau tableau contient le même nombre d'éléments que le tableau original
+        const updatedTasks = tasks.map(task => (updatedTask.id === task.id ? updatedTask : task));
+
+        setTasks(updatedTasks);
+    };
+
+    return (
+        <section className="container">
+            <h2>TodoList</h2>
+
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <Fragment>
+                    <AddTask createTask={createTask} />
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Title</th>
+                                <th>Done</th>
+                                <th>Action</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/*  Afficher data */}
+                            {tasks.map(task => (
+                                <Task key={task.id} task={task} updateTask={updateTask} deleteTask={deleteTask} />
+                            ))}
+                        </tbody>
+                    </table>
+                </Fragment>
+            )}
+        </section>
+    );
+};
 
 export default TodoList;

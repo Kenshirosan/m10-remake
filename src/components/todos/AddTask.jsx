@@ -1,52 +1,45 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+// Props destructuré
+const AddTask = ({ createTask }) => {
+    // 1er argument : propriété du state; 2ème argument : la fonction pour modifier le state
+    let [title, setTitle] = useState('');
 
-class AddTask extends Component {
-    state = {
-        title: '',
+    const recordInputValue = e => {
+        setTitle(e.target.value);
     };
 
-    recordInputValue(e) {
-        this.setState({ title: e.target.value });
-    }
-
-    handleSubmit(e) {
+    const handleSubmit = e => {
         e.preventDefault();
 
         // Créer une tâche
-
         let task = {
             id: Math.random().toString(16),
-            title: this.state.title,
+            title: title, // Le but est d'écrire une seule fois title
             done: false,
         };
 
-        this.props.createTask(task);
-        e.target.reset();
-    }
+        createTask(task);
 
-    render() {
-        return (
-            <form onSubmit={e => this.handleSubmit(e)}>
-                <fieldset>
-                    <ul>
-                        <li>
-                            <legend>Ajoutez une tâche </legend>
-                            <input
-                                onChange={this.recordInputValue.bind(this)}
-                                type="text"
-                                name="title"
-                            />
-                            <button style={btnStyle} type="submit">
-                                Créer une tâche
-                            </button>
-                        </li>
-                    </ul>
-                </fieldset>
-            </form>
-        );
-    }
-}
+        e.target.reset();
+    };
+
+    return (
+        <form onSubmit={e => handleSubmit(e)}>
+            <fieldset>
+                <ul>
+                    <li>
+                        <legend>Ajoutez une tâche </legend>
+                        <input onChange={recordInputValue} type="text" name="title" />
+                        <button style={btnStyle} type="submit">
+                            Créer une tâche
+                        </button>
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    );
+};
 
 AddTask.propTypes = {
     createTask: PropTypes.func.isRequired,

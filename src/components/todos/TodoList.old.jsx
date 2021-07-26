@@ -1,27 +1,8 @@
 import { Component, Fragment } from 'react';
 import Loader from '../spinners/Loader';
 import Task from './Task';
-import AddTaskOld from './AddTask';
+import AddTask from './AddTask';
 import data from './data';
-/*
- *
- * CRUD
- * CREATE
- * READ
- * UPDATE
- * DELETE
- *
- * RESTFul API
- *
- * INDEX => Récupérer les données et les afficher. (maybe...)
- * CREATE => Montre un formulaire pour créer une resource.
- * STORE => Créer une resource : Besoin des données du formulaire.
- * SHOW => Montre une resource : On a besoin d'identifier la resource : il faut un identifiant unique.
- * EDIT => Montre un formulaire pré-rempli : On a besoin d'un identifiant unique, on a besoin de l'objet à mettre à jour.
- * UPDATE => Met à jour la resource : Besoin des données du formulaire et d'un identifiant unique.
- * DESTROY => Efface la resource : besoin d'un identifiant unique.
- *
- */
 
 class TodoList extends Component {
     constructor() {
@@ -34,50 +15,52 @@ class TodoList extends Component {
 
         this.updateTask = this.updateTask.bind(this);
         this.deleteTask = this.deleteTask.bind(this);
+        this.createTask = this.createTask.bind(this);
     }
 
-    // Méthode du cycle de vie du composant
-    // est appelée automatiquement après le constructeur
+    /**
+     * componentDidMount() => méthode qui fait partie du cycle de vie du composant et qui est appelée juste après le constructeur
+     */
     componentDidMount() {
         setTimeout(() => {
-            this.setState({ tasks: data });
-
-            this.setState({ isLoading: false });
+            this.setState({ tasks: data, isLoading: false });
         }, 500);
+    }
+
+    createTask(task) {
+        // setState => modifier le state
+        this.setState({ tasks: [task, ...this.state.tasks] });
     }
 
     deleteTask(id) {
         if (window.confirm('Etes vous sur de vouloir effacer cette tâche ?')) {
             //
             this.setState({
-                tasks: this.state.tasks.filter(task => task.id !== id),
+                tasks: this.state.tasks.filter(task => {
+                    if (task.id !== id) {
+                        return task;
+                    }
+                    // return id !== task.id;
+                }),
             });
         }
     }
 
     updateTask(updatedTask) {
-        // Trouver la tache dans le state : On la reçu en paramètre
-        // Mettre à jour la tâche : La propriété done doit prendre la valeur inverse de ce qu'elle est maintenant
         updatedTask.done = !updatedTask.done;
 
-        // map retourne un tableau modifié selon une condition,
-        // Ce tableau contient le même nombre d'éléments que le tableau original
-        //
-        // Mettre a jour le tableau contacts
-        // Avec map : si on trouve sur un contact la même id que l'on a dans updateContact, on remplace l'objet.
-        // Sinon on retourne l'objet en place sans modifications.
-        let newTasks = this.state.tasks.map(task => {
-            return updatedTask.id === task.id ? updatedTask : task;
+        this.setState({
+            tasks: this.state.tasks.map(
+                task => {
+                    if (updatedTask.id === task.id) {
+                        return updatedTask;
+                    }
 
-            // On compare l'id de la tâche qu'on a mis à jour avec les id des tâches du state
-            // if (updatedTask.id === task.id) {
-            //   return updatedTask;
-            // }
-            // return task;
+                    return task;
+                }
+                // updatedTask.id === task.id ? updatedTask : task
+            ),
         });
-
-        // Mettre à jour le state
-        this.setState({ tasks: newTasks });
     }
 
     render() {
@@ -91,7 +74,7 @@ class TodoList extends Component {
                     <Loader />
                 ) : (
                     <Fragment>
-                        <AddTaskOld />
+                        <AddTask createTask={this.createTask} />
                         <table>
                             <thead>
                                 <tr>

@@ -18,7 +18,7 @@ import Footer from './components/yoga/Footer';
 import Articles from './components/accordeon-basics/Articles';
 
 // sortByCategories
-import MenuList from './components/sortItemsByCategory/MenuList';
+import Menu from './components/sortItemsByCategory/Menu';
 const App = () => {
     return (
         <Fragment>
@@ -29,8 +29,8 @@ const App = () => {
             {/*<TodoList />*/}
             {/*<UsersList />*/}
             {/*<Rocket />*/}
-            <Articles />
-            {/*<MenuList />*/}
+            {/*<Articles />*/}
+            <Menu />
             <Footer text={new Date().toLocaleDateString()} />
         </Fragment>
     );

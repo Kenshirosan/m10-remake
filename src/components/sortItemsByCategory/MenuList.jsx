@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import './menu.css';
 
-const MenuList = props => {
+const MenuList = ({ products }) => {
     return (
-        <div>
-            Menu
-            <div className="btn-container">
-                <button>Un</button>
-                <button>Deux</button>
-                <button>Trois</button>
-                <button>Quatre</button>
-            </div>
-        </div>
+        <section>
+            {products.map(product => (
+                <p>{product.name}</p>
+            ))}
+        </section>
     );
 };
 
-MenuList.propTypes = {};
+MenuList.propTypes = {
+    products: PropTypes.array.isRequired,
+};
 
 export default MenuList;

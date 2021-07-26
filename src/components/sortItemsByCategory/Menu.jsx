@@ -1,10 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment, useState } from 'react';
+import data from './data';
+import MenuList from './MenuList';
+import './menu.css';
+import Categories from './Categories';
 
-const Menu = props => {
-    return <div>Menu</div>;
+const Menu = () => {
+    const [items, setItems] = useState(data);
+
+    return (
+        <Fragment>
+            <Categories />
+            <MenuList products={items} />
+        </Fragment>
+    );
 };
-
-Menu.propTypes = {};
 
 export default Menu;

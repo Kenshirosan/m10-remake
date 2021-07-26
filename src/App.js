@@ -6,6 +6,8 @@ import UsersList from './components/userslist/UsersList';
 import Header from './components/yoga/Header';
 // import Main from './components/yoga/Main';
 import Footer from './components/yoga/Footer';
+import MenuList from './components/sortItemsByCategory/MenuList';
+import Articles from './components/accordeon-basics/Articles';
 // M10
 // import Header from "./components/m10/Header";
 // import Presentation from "./components/m10/Presentation";
@@ -19,10 +21,12 @@ const App = () => {
             <Header title="Bienvenue sur le site d'Ila Yoga" />
             {/*<Presentation />*/}
             {/*<Main />*/}
-            <Posts />
-            <TodoList />
-            <UsersList />
+            {/*<Posts />*/}
+            {/*<TodoList />*/}
+            {/*<UsersList />*/}
             {/*<Rocket />*/}
+            <Articles />
+            {/*<MenuList />*/}
             <Footer text={new Date().toLocaleDateString()} />
         </Fragment>
     );

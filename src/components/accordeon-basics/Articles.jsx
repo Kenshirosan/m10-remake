@@ -1,4 +1,6 @@
+import { useState, Fragment } from 'react';
 import data from './data';
+import Article from './Article';
 
 // Afficher les articles en se servant du composant Article
 
@@ -7,7 +9,15 @@ import data from './data';
 // 3. Passer chaque article en prop dans le composant Article : ne pas oublier key sur le composant Article
 
 const Articles = () => {
-    return <div>Articles Component</div>;
+    const [articles, setArticles] = useState(data);
+
+    return (
+        <Fragment>
+            <h2>Articles Component</h2>
+
+            {/*Map avec articles ici*/}
+        </Fragment>
+    );
 };
 
 export default Articles;

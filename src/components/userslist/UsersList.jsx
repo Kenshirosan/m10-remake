@@ -28,10 +28,10 @@ const UsersList = () => {
 
     // Remplace componentDidMount
     useEffect(() => {
-        getData(baseUrl);
+        getData(baseUrl, setUsers);
     }, []);
 
-    const getData = url => {
+    const getData = (url, setState) => {
         fetch(url)
             .then(res => {
                 if (res.ok) {
@@ -41,7 +41,7 @@ const UsersList = () => {
                 throw new Error('Something went horribly wrong !');
             })
             .then(data => {
-                setUsers(data);
+                setState(data);
                 setIsLoading(false);
             })
             .catch(error => {

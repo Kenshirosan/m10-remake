@@ -12,7 +12,11 @@ import Loader from '../spinners/Loader';
 // Pas de this.setState();
 // Pas de constructeur
 // Pas de render : uniquement un return
+//
+// Commencer par re-déclarer Posts pour en faire une fonction
 class Posts extends Component {
+    //Faire le state avec hooks
+    // Virer le constructeur
     constructor() {
         super();
 
@@ -24,6 +28,9 @@ class Posts extends Component {
     }
 
     // Méthode du cycle de vie du composant : appelée automatiquement après le constructeur
+
+    // Remplacer cette méthode par useEffect()
+    //
     componentDidMount() {
         let postsUrl = new URL('https://jsonplaceholder.typicode.com/posts');
         let usersUrl = new URL('https://jsonplaceholder.typicode.com/users');

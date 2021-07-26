@@ -33,6 +33,7 @@ class UsersList extends Component {
     }
 
     // Méthode du cycle de vie du composant : appelée automatiquement après le constructeur
+    // Remplacer par useEffect
     componentDidMount() {
         this.getData(this.state.baseUrl, 'users');
     }

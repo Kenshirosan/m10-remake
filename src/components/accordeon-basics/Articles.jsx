@@ -9,13 +9,15 @@ import Article from './Article';
 // 3. Passer chaque article en prop dans le composant Article : ne pas oublier key sur le composant Article
 
 const Articles = () => {
-    const [articles, setArticles] = useState(data);
+    const [articles] = useState(data);
 
     return (
         <Fragment>
             <h2>Articles Component</h2>
 
-            {/*Map avec articles ici*/}
+            {articles.map(article => (
+                <Article key={article.id} article={article} />
+            ))}
         </Fragment>
     );
 };

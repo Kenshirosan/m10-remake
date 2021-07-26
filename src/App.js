@@ -6,15 +6,19 @@ import UsersList from './components/userslist/UsersList';
 import Header from './components/yoga/Header';
 // import Main from './components/yoga/Main';
 import Footer from './components/yoga/Footer';
-import MenuList from './components/sortItemsByCategory/MenuList';
-import Articles from './components/accordeon-basics/Articles';
 // M10
 // import Header from "./components/m10/Header";
 // import Presentation from "./components/m10/Presentation";
 // import Main from "./components/m10/Main";
 
+// Rocket
 // import Rocket from './components/rocket/Rocket';
 
+// Accordéon
+import Articles from './components/accordeon-basics/Articles';
+
+// sortByCategories
+import MenuList from './components/sortItemsByCategory/MenuList';
 const App = () => {
     return (
         <Fragment>

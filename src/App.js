@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-// import Posts from "./components/blog/Posts";
+import Posts from './components/blog/Posts';
 import TodoList from './components/todos/TodoList';
 import UsersList from './components/userslist/UsersList';
 // YOGA
@@ -19,7 +19,7 @@ const App = () => {
             <Header title="Bienvenue sur le site d'Ila Yoga" />
             {/*<Presentation />*/}
             {/*<Main />*/}
-            {/*<Posts />*/}
+            <Posts />
             <TodoList />
             <UsersList />
             {/*<Rocket />*/}

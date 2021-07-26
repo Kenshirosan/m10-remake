@@ -23,13 +23,13 @@ import User from './User';
  */
 const UsersList = () => {
     const [users, setUsers] = useState([]);
-    const [baseUrl, setBaseUrl] = useState(new URL('https://jsonplaceholder.typicode.com/users'));
+    const [baseUrl] = useState(new URL('https://jsonplaceholder.typicode.com/users'));
     const [isLoading, setIsLoading] = useState(true);
 
     // Remplace componentDidMount
     useEffect(() => {
         getData(baseUrl, setUsers);
-    }, []);
+    }, [baseUrl]);
 
     const getData = (url, setState) => {
         fetch(url)

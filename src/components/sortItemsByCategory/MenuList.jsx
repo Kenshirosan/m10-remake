@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 const MenuList = ({ products }) => {
     return (
-        <section>
+        <article>
             {products.map(product => (
-                <p>{product.name}</p>
+                <p key={product.id}>{product.name}</p>
             ))}
-        </section>
+        </article>
     );
 };
 

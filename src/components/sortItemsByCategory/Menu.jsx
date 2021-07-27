@@ -20,11 +20,16 @@ const Menu = () => {
     }, []);
 
     return (
-        <section>
+        <section style={style}>
             <Categories categories={categories} />
             <MenuList products={items} />
         </section>
     );
 };
+
+const style = {
+    width: '80%',
+    margin: 'auto',
+}
 
 export default Menu;

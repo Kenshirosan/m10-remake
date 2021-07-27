@@ -3,11 +3,17 @@ import PropTypes from 'prop-types';
 
 const MenuList = ({ products }) => {
     return (
-        <article>
-            {products.map(product => (
-                <p key={product.id}>{product.name}</p>
-            ))}
-        </article>
+        <Fragment>
+            {products.map(product =>  {
+                return <article className="card">
+                    <img src={product.img} alt="Menu Item" style={{ width: '100%' }}/>
+                    <div className="container">
+                        <h4>{product.name}</h4>
+                        <p>{product.category}</p>
+                    </div>
+                </article>
+            })}
+        </Fragment>
     );
 };
 

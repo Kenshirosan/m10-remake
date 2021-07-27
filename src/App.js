@@ -1,6 +1,5 @@
-import { Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NotFound from './components/errors/NotFound';
 import Posts from './components/blog/Posts';
 import TodoList from './components/todos/TodoList';
 // import UsersList from './components/userslist/UsersList';
@@ -29,10 +28,11 @@ import Pricing from './components/pages/Pricing';
 
 const App = () => {
     return (
-        <Fragment>
-            <Router>
-                <Header title="Bienvenue sur le site d'Ila Yoga" />
-
+        <Router>
+            <Header title="Bienvenue sur le site d'Ila Yoga" />
+            {/* Si les composants s'affichent pas : Pensez à mettre les uniquement les routes dans le switch*/}
+            <Switch>
+                {/*exact : Si on reçoit pas exactement '/', on affiche pas le composant*/}
                 <Route exact path="/" component={Presentation} />
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
@@ -44,10 +44,10 @@ const App = () => {
                 {/*<Rocket />*/}
                 {/*/!*<Articles />*!/*/}
                 {/*<Menu />*/}
-            </Router>
-
+                <Route component={NotFound} />
+            </Switch>
             <Footer text={new Date().toLocaleDateString()} />
-        </Fragment>
+        </Router>
     );
 };
 

@@ -8,3 +8,7 @@
 button:hover {
     cursor: pointer;
 }
+
+.active {
+    background-color: #999999;
+}

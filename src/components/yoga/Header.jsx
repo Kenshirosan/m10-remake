@@ -1,25 +1,42 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = ({ title }) => {
     return (
         <header>
             <nav>
-                <a href="!#">
+                <NavLink exact to="/">
                     <i className="fa fa-calendar" />
-                    Agenda
-                </a>
-                <a href="!#">
+                    Home
+                </NavLink>
+                <NavLink to="/about">
+                    <i className="fa fa-calendar" />
+                    About
+                </NavLink>
+                <NavLink to="/contact">
                     <i className="fa fa-book" />
-                    Livre d'or
-                </a>
-                <a href="!#">
+                    Contact
+                </NavLink>
+                <NavLink to="/pricing">
                     <i className="fa fa-picture-o" />
-                    Album Photo
-                </a>
-                <a href="!#">
+                    Pricing
+                </NavLink>
+                <NavLink to="/main">
+                    <i className="fa fa-picture-o" />
+                    Main
+                </NavLink>
+                <NavLink to="/blog">
+                    <i className="fa fa-picture-o" />
+                    Blog
+                </NavLink>
+                <NavLink to="/todos">
+                    <i className="fa fa-picture-o" />
+                    Todo
+                </NavLink>
+                <Link to="/contact">
                     <i className="fa fa-envelope" />
                     Nous contacter
-                </a>
+                </Link>
             </nav>
             <p className="promo">
                 <strong>OFFRE PROMO : Votre premier cours d'essai gratuit !</strong>

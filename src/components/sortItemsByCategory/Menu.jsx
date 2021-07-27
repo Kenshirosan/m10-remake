@@ -9,6 +9,17 @@ const Menu = () => {
     const [categories, setCategories] = useState([]);
 
 
+    // Filtrer les catégories quand on clique sur un bouton :
+
+    // Créer une fonction qui permet de 'répondre au clique' (console.log)
+
+    // Passez cette fonction en prop au composant Categories
+
+    // En suite, faire en sorte que la fonction mette a jour le state : le state ne contiendra que les items appartenant à la catégorie sur laquelle on a cliqué.
+
+    // Si category === 'Tout' : On affiche tout
+
+    // Si category === '?' : On FILTRE les items
 
     useEffect(() => {
         const filtered = items.map(item => item.category);
@@ -30,6 +41,7 @@ const Menu = () => {
 const style = {
     width: '80%',
     margin: 'auto',
+    textAlign: 'center'
 }
 
 export default Menu;

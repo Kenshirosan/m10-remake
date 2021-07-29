@@ -25,6 +25,7 @@ import Main from './components/m10/Main';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Pricing from './components/pages/Pricing';
+import Slider from './components/Slider';
 
 const App = () => {
     return (
@@ -40,6 +41,7 @@ const App = () => {
                 <Route path="/main" component={Main} />
                 <Route path="/blog" component={Posts} />
                 <Route path="/todos" component={TodoList} />
+                <Route path="/slider" component={Slider} />
                 {/*<UsersList />*/}
                 {/*<Rocket />*/}
                 {/*/!*<Articles />*!/*/}

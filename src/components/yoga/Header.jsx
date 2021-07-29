@@ -33,6 +33,10 @@ const Header = ({ title }) => {
                     <i className="fa fa-picture-o" />
                     Todo
                 </NavLink>
+                <Link to="/slider">
+                    <i className="fa fa-envelope" />
+                    Slider
+                </Link>
                 <Link to="/contact">
                     <i className="fa fa-envelope" />
                     Nous contacter
